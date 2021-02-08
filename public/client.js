@@ -67,7 +67,7 @@ class Client {
     addVideo(id, stream) {
         const videoGrid = document.getElementById('video-div');
         const video = document.createElement('video');
-        
+
         video.id = id;
         video.autoplay = true;
         video.srcObject = stream;
@@ -102,7 +102,10 @@ class Client {
 
     candidate(id, candidate) {
         console.log('candidate', id);
-        this.peerConnections[id].addIceCandidate(new RTCIceCandidate(candidate));
+
+        if (candidate) {
+            this.peerConnections[id].addIceCandidate(new RTCIceCandidate(candidate));
+        }
     }
 
     disconnected(id) {
