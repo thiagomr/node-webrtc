@@ -1,0 +1,48 @@
+{
+    "name": "node-webrtc",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "start:dev": "nodemon src/server.js",
+        "generate": "node src/cli.js",
+        "lint": "eslint . --ext .js",
+        "lint:fix": "eslint . --ext .js --fix",
+        "test": "jest"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.js": [
+            "npm run lint:fix",
+            "npm test",
+            "git add"
+        ]
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "coveragePathIgnorePatterns": [
+            "/node_modules/"
+        ]
+    },
+    "keywords": [],
+    "author": "Thiago Moraes",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "socket.io": "^3.1.1"
+    },
+    "devDependencies": {
+        "eslint": "^7.6.0",
+        "husky": "^4.2.5",
+        "jest": "^26.4.0",
+        "lint-staged": "^10.2.11",
+        "supertest": "^4.0.2",
+        "nodemon": "^2.0.4"
+    }
+}
